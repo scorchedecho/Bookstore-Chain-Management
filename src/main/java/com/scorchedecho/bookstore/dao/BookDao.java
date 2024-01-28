@@ -13,17 +13,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.dao;
 
 import com.scorchedecho.bookstore.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Book DAO class of the Bookstore application
+ * Book DAO class of the Bookstore application.
  *
  * @author Ari
  * @since 2024-01-26
  */
-public interface BookDao extends JpaRepository<Book, Long>{
+public interface BookDao extends JpaRepository<Book, Long> {
 
 }

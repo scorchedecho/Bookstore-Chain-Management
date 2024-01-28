@@ -13,13 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.dao;
 
 import com.scorchedecho.bookstore.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Employee DAO class of the Pet Store application
+ * Employee DAO class of the Pet Store application.
  *
  * @author Ari
  * @since 2024-01-26

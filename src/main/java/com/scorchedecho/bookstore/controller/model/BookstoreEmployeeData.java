@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.controller.model;
 
 import com.scorchedecho.bookstore.entity.Employee;
@@ -36,7 +37,8 @@ public class BookstoreEmployeeData {
   private String employeeJobTitle;
 
   /**
-   * Constructor for BookstoreEmployeeData
+   * Constructor for BookstoreEmployeeData.
+   *
    * @param employee the employee to be converted to BookstoreEmployeeData
    */
   public BookstoreEmployeeData(Employee employee) {

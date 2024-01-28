@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.controller.model;
 
 import com.scorchedecho.bookstore.entity.Book;
@@ -40,8 +41,9 @@ public class OrderData {
   private Set<BookData> books = new HashSet<>();
 
   /**
-   * Constructor for OrderData
-   * @param order the order to be converted to OrderData
+   * Constructor for OrderData.
+   *
+   * @param order the order to be converted to OrderData.
    */
   public OrderData(Order order) {
     // copy all the fields from the Order to the OrderData

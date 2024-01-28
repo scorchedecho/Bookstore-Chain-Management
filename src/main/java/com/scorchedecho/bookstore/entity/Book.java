@@ -13,9 +13,9 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.entity;
 
-import com.fasterxml.jackson.databind.util.ArrayBuilders.BooleanBuilder;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +29,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
- * Book Entity class of the Bookstore application
+ * Book Entity class of the Bookstore application.
  *
  * @author Ari
  * @since 2024-01-26

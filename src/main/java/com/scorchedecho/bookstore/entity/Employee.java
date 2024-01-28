@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.entity;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +28,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
- * Employee Entity class of the Bookstore application
+ * Employee Entity class of the Bookstore application.
  *
  * @author Ari
  * @since 2024-01-26

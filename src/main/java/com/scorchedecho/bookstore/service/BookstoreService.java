@@ -13,16 +13,23 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.service;
 
+import com.scorchedecho.bookstore.controller.model.BookData;
+import com.scorchedecho.bookstore.controller.model.BookstoreCustomerData;
+import com.scorchedecho.bookstore.controller.model.BookstoreData;
+import com.scorchedecho.bookstore.controller.model.BookstoreEmployeeData;
+import com.scorchedecho.bookstore.controller.model.OrderData;
 import com.scorchedecho.bookstore.dao.BookDao;
 import com.scorchedecho.bookstore.dao.CustomerDao;
 import com.scorchedecho.bookstore.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Pet Store Service class of the Pet Store application
+ * Pet Store Service class of the Pet Store application.
  *
  * @author Ari
  * @since 2024-01-26
@@ -39,5 +46,33 @@ public class BookstoreService {
   @Autowired
   private BookDao bookDao;
 
+  // PLANNING
+  // No methods are yet implemented in this service.
 
+  /* Transactional Methods */
+
+  @Transactional
+  public BookstoreData saveBookstore(BookstoreData bookstoreData) {
+
+  }
+
+  @Transactional
+  public BookstoreEmployeeData saveEmployee(BookstoreEmployeeData employeeData) {
+
+  }
+
+  @Transactional
+  public BookstoreCustomerData saveCustomer(BookstoreCustomerData customerData) {
+
+  }
+
+  @Transactional
+  public BookData saveBook(BookData bookData) {
+
+  }
+
+  @Transactional
+  public OrderData saveOrder(OrderData orderData) {
+
+  }
 }

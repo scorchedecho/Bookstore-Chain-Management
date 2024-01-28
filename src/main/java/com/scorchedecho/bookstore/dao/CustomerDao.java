@@ -13,13 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.dao;
 
 import com.scorchedecho.bookstore.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Customer DAO class of the Bookstore application
+ * Customer DAO class of the Bookstore application.
  *
  * @author Ari
  * @since 2024-01-26

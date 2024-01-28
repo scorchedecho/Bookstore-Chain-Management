@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.entity;
 
 import jakarta.persistence.CascadeType;
@@ -31,6 +32,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+/**
+ * Bookstore Entity class of the Bookstore application.
+ *
+ * @author Ari
+ * @since 2024-01-26
+ */
 @Entity
 @Data
 public class Bookstore {
@@ -66,4 +73,10 @@ public class Bookstore {
   @ToString.Exclude // prevent recursion
   @OneToMany(mappedBy = "bookstore", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<Employee> employees = new HashSet<>();
+
+  // relationship variable
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude // prevent recursion
+  @ManyToMany(mappedBy = "bookstores", cascade = CascadeType.ALL) // TODO ask about this
+  private Set<Book> books = new HashSet<>();
 }

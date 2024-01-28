@@ -13,9 +13,15 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.controller.error;
 
+import java.util.Map;
+import java.util.NoSuchElementException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -29,4 +35,35 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class GlobalErrorHandler {
 
+  /**
+   * Handle NoSuchElementException.
+   *
+   * @param nsee the NoSuchElementException
+   * @return the error message
+   */
+  // HTTP 404 (NOT FOUND)
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public Map<String, String> handleNoSuchElementException(NoSuchElementException nsee) {
+    // log the error
+    log.error("NoSuchElementException: " + nsee.toString());
+    // return the error message
+    return Map.of("message", nsee.toString());
+  }
+
+  /**
+   * Handle IllegalArgumentException.
+   *
+   * @param iae the IllegalArgumentException
+   * @return the error message
+   */
+  // HTTP 400 (BAD REQUEST)
+  @ExceptionHandler(IllegalArgumentException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public Map<String, String> handleIllegalArgumentException(IllegalArgumentException iae) {
+    // log the error
+    log.error("IllegalArgumentException: " + iae.toString());
+    // return the error message
+    return Map.of("message", iae.toString());
+  }
 }

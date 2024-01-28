@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.controller.model;
 
 import com.scorchedecho.bookstore.entity.Book;
@@ -35,7 +36,8 @@ public class BookData {
   private String bookGenre;
 
   /**
-   * Constructor for BookData
+   * Constructor for BookData.
+   *
    * @param book Book
    */
   public BookData(Book book) {

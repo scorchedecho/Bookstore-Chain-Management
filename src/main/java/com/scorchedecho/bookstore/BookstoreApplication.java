@@ -13,13 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Bookstore Application class of the Bookstore application
+ * Bookstore Application class of the Bookstore application.
  *
  * @author Ari
  * @since 2024-01-26

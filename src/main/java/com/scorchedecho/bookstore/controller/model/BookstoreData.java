@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package com.scorchedecho.bookstore.controller.model;
 
 import com.scorchedecho.bookstore.entity.Bookstore;
@@ -45,7 +46,8 @@ public class BookstoreData {
   private Set<Employee> employees = new HashSet<>();
 
   /**
-   * Constructor for BookstoreData
+   * Constructor for BookstoreData.
+   *
    * @param bookstore the bookstore to be converted to BookstoreData
    */
   public BookstoreData(Bookstore bookstore) {
