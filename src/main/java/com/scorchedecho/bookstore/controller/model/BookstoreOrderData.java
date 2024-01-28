@@ -33,26 +33,26 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class OrderData {
+public class BookstoreOrderData {
   private Long orderId;
   private String orderDate;
   private Customer customer;
   private Bookstore bookstore;
-  private Set<BookData> books = new HashSet<>();
+  private Set<BookstoreBookData> books = new HashSet<>();
 
   /**
    * Constructor for OrderData.
    *
    * @param order the order to be converted to OrderData.
    */
-  public OrderData(Order order) {
+  public BookstoreOrderData(Order order) {
     // copy all the fields from the Order to the OrderData
     this.orderId = order.getOrderId();
     this.orderDate = order.getOrderDate();
     this.customer = order.getCustomer();
     this.bookstore = order.getBookstore();
     for (Book book : order.getBooks()) {
-      this.books.add(new BookData(book));
+      this.books.add(new BookstoreBookData(book));
     }
   }
 }

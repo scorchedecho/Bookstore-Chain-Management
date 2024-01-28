@@ -16,14 +16,19 @@
 
 package com.scorchedecho.bookstore.service;
 
-import com.scorchedecho.bookstore.controller.model.BookData;
+import com.scorchedecho.bookstore.controller.model.BookstoreBookData;
 import com.scorchedecho.bookstore.controller.model.BookstoreCustomerData;
 import com.scorchedecho.bookstore.controller.model.BookstoreData;
 import com.scorchedecho.bookstore.controller.model.BookstoreEmployeeData;
-import com.scorchedecho.bookstore.controller.model.OrderData;
+import com.scorchedecho.bookstore.controller.model.BookstoreOrderData;
 import com.scorchedecho.bookstore.dao.BookDao;
 import com.scorchedecho.bookstore.dao.CustomerDao;
 import com.scorchedecho.bookstore.dao.EmployeeDao;
+import com.scorchedecho.bookstore.entity.Book;
+import com.scorchedecho.bookstore.entity.Bookstore;
+import com.scorchedecho.bookstore.entity.Customer;
+import com.scorchedecho.bookstore.entity.Employee;
+import com.scorchedecho.bookstore.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +37,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Pet Store Service class of the Pet Store application.
  *
  * @author Ari
- * @since 2024-01-26
+ * @since  2024-01-26
  */
 @Service
 public class BookstoreService {
@@ -49,30 +54,125 @@ public class BookstoreService {
   // PLANNING
   // No methods are yet implemented in this service.
 
-  /* Transactional Methods */
+  /* *************************************
+   * BOOKSTORE METHODS                   *
+   * CRUD?: CREATE, READ, UPDATE, DELETE *
+   * *************************************/
 
   @Transactional
   public BookstoreData saveBookstore(BookstoreData bookstoreData) {
 
   }
 
-  @Transactional
-  public BookstoreEmployeeData saveEmployee(BookstoreEmployeeData employeeData) {
+  private Bookstore findOrCreateBookstore(BookstoreData bookstoreData) {
 
   }
 
-  @Transactional
-  public BookstoreCustomerData saveCustomer(BookstoreCustomerData customerData) {
+  private Bookstore findBookstore(long bookstoreId) {
 
   }
 
-  @Transactional
-  public BookData saveBook(BookData bookData) {
+  private void copyBookstoreData(Bookstore bookstore, BookstoreData bookstoreData) {
 
   }
 
+  private void deleteBookstore(long bookstoreId) {
+
+  }
+
+  /* *************************************
+   * BOOKSTORE EMPLOYEE METHODS          *
+   * CRUD?: CREATE, READ, UPDATE, DELETE *
+   * *************************************/
+
   @Transactional
-  public OrderData saveOrder(OrderData orderData) {
+  public BookstoreEmployeeData saveEmployee(long bookstoreId, BookstoreEmployeeData employeeData) {
+
+  }
+
+  private Employee findOrCreateEmployee(long bookstoreId, BookstoreEmployeeData employeeData) {
+
+  }
+
+  private Employee findEmployee(long bookstoreId, long employeeId) {
+
+  }
+
+  private void copyEmployeeData(Employee employee, BookstoreEmployeeData employeeData) {
+
+  }
+
+  private void deleteEmployee(long employeeId) {
+
+  }
+
+  /* *************************************
+   * BOOKSTORE CUSTOMER METHODS          *
+   * CRUD?: CREATE, READ, UPDATE         *
+   * *************************************/
+
+  @Transactional
+  public BookstoreCustomerData saveCustomer(long bookstoreId, BookstoreCustomerData customerData) {
+
+  }
+
+  private Customer findOrCreateCustomer(long bookstoreId, BookstoreCustomerData customerData) {
+
+  }
+
+  private Customer findCustomer(long bookstoreId, long customerId) {
+
+  }
+
+  private void copyCustomerData(Customer customer, BookstoreCustomerData customerData) {
+
+  }
+
+  /* *************************************
+   * BOOKSTORE BOOKS METHODS             *
+   * CRUD?: CREATE, READ, UPDATE, DELETE *
+   * *************************************/
+
+  @Transactional
+  public BookstoreBookData saveBook(long bookstoreId, BookstoreBookData bookstoreBookData) {
+
+  }
+
+  private Book findOrCreateBook(long bookstoreId, BookstoreBookData bookData) {
+
+  }
+
+  private Book findBook(long bookstoreId, long bookId) {
+
+  }
+
+  private void copyBookData(Book book, BookstoreBookData bookData) {
+
+  }
+
+  private void deleteBook(long bookId) {
+
+  }
+
+  /* *************************************
+   * ORDER METHODS                       *
+   * CRUD?: CREATE, READ, UPDATE         *
+   * *************************************/
+
+  @Transactional
+  public BookstoreOrderData saveOrder(long bookstoreId, BookstoreOrderData bookstoreOrderData) {
+
+  }
+
+  private Order findOrCreateOrder(long bookstoreId, BookstoreOrderData orderData) {
+
+  }
+
+  private Order findOrder(long bookstoreId, long orderId) {
+
+  }
+
+  private void copyOrderData(Book book, BookstoreOrderData orderData) {
 
   }
 }

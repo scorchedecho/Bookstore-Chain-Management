@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
-public class BookData {
+public class BookstoreBookData {
   private long bookId;
   private String bookTitle;
   private String bookAuthor;
@@ -40,7 +40,7 @@ public class BookData {
    *
    * @param book Book
    */
-  public BookData(Book book) {
+  public BookstoreBookData(Book book) {
     // copy all the fields from the Book into the BookData
     this.bookId = book.getBookId();
     this.bookTitle = book.getBookTitle();

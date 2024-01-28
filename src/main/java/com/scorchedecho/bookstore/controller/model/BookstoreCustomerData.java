@@ -39,7 +39,7 @@ public class BookstoreCustomerData {
   private String customerPhone;
   private String customerEmail;
   private Set<BookstoreData> bookstores = new HashSet<>();
-  private Set<OrderData> orders = new HashSet<>();
+  private Set<BookstoreOrderData> orders = new HashSet<>();
 
   /**
    * Constructor for BookstoreCustomerData.
@@ -58,7 +58,7 @@ public class BookstoreCustomerData {
       this.bookstores.add(new BookstoreData(bookstore));
     }
     for (Order order : customer.getOrders()) {
-      this.orders.add(new OrderData(order));
+      this.orders.add(new BookstoreOrderData(order));
     }
   }
 }
