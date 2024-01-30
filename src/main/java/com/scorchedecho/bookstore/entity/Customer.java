@@ -58,7 +58,7 @@ public class Customer {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @OneToMany(mappedBy = "customers", cascade = CascadeType.ALL)
-  private Set<Order> orders = new HashSet<>();
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+  private Set<Orderb> orderbs = new HashSet<>();
 
 }

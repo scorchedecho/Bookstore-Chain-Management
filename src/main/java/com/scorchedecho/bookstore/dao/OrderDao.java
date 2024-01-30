@@ -16,7 +16,7 @@
 
 package com.scorchedecho.bookstore.dao;
 
-import com.scorchedecho.bookstore.entity.Order;
+import com.scorchedecho.bookstore.entity.Orderb;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -25,6 +25,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Ari
  * @since 2024-01-26
  */
-public interface OrderDao extends JpaRepository<Order, Long> {
+public interface OrderDao extends JpaRepository<Orderb, Long> {
 
 }

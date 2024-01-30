@@ -22,7 +22,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Bookstore DAO class of the Bookstore application.
  *
- * @author @Ari
+ * @author Ari
  * @since 2024-01-26
  */
 public interface BookstoreDao extends JpaRepository<Bookstore, Long> {

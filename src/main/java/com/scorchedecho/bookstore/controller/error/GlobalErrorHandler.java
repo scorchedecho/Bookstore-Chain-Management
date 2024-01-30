@@ -66,4 +66,6 @@ public class GlobalErrorHandler {
     // return the error message
     return Map.of("message", iae.toString());
   }
+
+  // todo HttpRequestMethodNotSupportedException
 }

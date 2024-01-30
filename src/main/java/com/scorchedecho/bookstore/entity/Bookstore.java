@@ -24,7 +24,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
@@ -52,6 +51,7 @@ public class Bookstore {
   private String bookstoreState;
   private String bookstoreZip;
   private String bookstorePhone;
+  private String bookstoreWebsite;
 
   // relationship variable
   @EqualsAndHashCode.Exclude
@@ -66,7 +66,7 @@ public class Bookstore {
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
   @OneToMany(mappedBy = "bookstore", cascade = CascadeType.PERSIST)
-  private Set<Order> orders = new HashSet<>();
+  private Set<Orderb> orderbs = new HashSet<>();
 
   // relationship variable
   @EqualsAndHashCode.Exclude
@@ -77,6 +77,9 @@ public class Bookstore {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @ManyToMany(mappedBy = "bookstores", cascade = CascadeType.ALL) // TODO ask about this
+  @ManyToMany(cascade = CascadeType.ALL) // TODO ask about this
+  @JoinTable(name = "bookstore_book",
+      joinColumns = @JoinColumn(name = "bookstore_id"),
+      inverseJoinColumns = @JoinColumn(name = "book_id"))
   private Set<Book> books = new HashSet<>();
 }

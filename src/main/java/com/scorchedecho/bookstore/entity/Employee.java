@@ -52,5 +52,5 @@ public class Employee {
   @ToString.Exclude // prevent recursion
   @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "bookstore_id")
-  private Bookstore petStore;
+  private Bookstore bookstore;
 }

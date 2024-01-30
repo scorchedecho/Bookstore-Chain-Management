@@ -1,0 +1,9 @@
+{
+  "bookstoreName": "Bookaria Atlanta",
+  "bookstoreAddress": "5678 Main St",
+  "bookstoreCity": "Atlanta",
+  "bookstoreState": "Georgia",
+  "bookstoreZip" : "30303",
+  "bookstorePhone": "239-555-5678",
+  "bookstoreWebsite": "www.bookaria.com/locations/atlanta"
+}

@@ -1,0 +1,9 @@
+{
+  "bookstoreName": "Bookaria Chicago",
+  "bookstoreAddress": "7193 Main St",
+  "bookstoreCity": "Chicago",
+  "bookstoreState": "Illinois",
+  "bookstoreZip" : "60007",
+  "bookstorePhone": "239-555-7193",
+  "bookstoreWebsite": "www.bookaria.com/locations/chicago"
+}

@@ -38,7 +38,7 @@ import lombok.ToString;
  */
 @Entity
 @Data
-public class Order {
+public class Orderb {
   // primary key
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +50,7 @@ public class Order {
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
   @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "customer_id")
   private Customer customer;
 
   // relationship variable
@@ -61,7 +62,7 @@ public class Order {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @OneToMany(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "book_id")
+  @OneToMany(mappedBy = "orderb", cascade = CascadeType.PERSIST, orphanRemoval = true)
+  //@JoinColumn(name = "book_id")
   private Set<Book> books = new HashSet<>();
 }

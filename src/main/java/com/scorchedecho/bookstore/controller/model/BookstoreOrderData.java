@@ -19,7 +19,7 @@ package com.scorchedecho.bookstore.controller.model;
 import com.scorchedecho.bookstore.entity.Book;
 import com.scorchedecho.bookstore.entity.Bookstore;
 import com.scorchedecho.bookstore.entity.Customer;
-import com.scorchedecho.bookstore.entity.Order;
+import com.scorchedecho.bookstore.entity.Orderb;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
@@ -43,15 +43,15 @@ public class BookstoreOrderData {
   /**
    * Constructor for OrderData.
    *
-   * @param order the order to be converted to OrderData.
+   * @param orderb the order to be converted to OrderData.
    */
-  public BookstoreOrderData(Order order) {
+  public BookstoreOrderData(Orderb orderb) {
     // copy all the fields from the Order to the OrderData
-    this.orderId = order.getOrderId();
-    this.orderDate = order.getOrderDate();
-    this.customer = order.getCustomer();
-    this.bookstore = order.getBookstore();
-    for (Book book : order.getBooks()) {
+    this.orderId = orderb.getOrderId();
+    this.orderDate = orderb.getOrderDate();
+    this.customer = orderb.getCustomer();
+    this.bookstore = orderb.getBookstore();
+    for (Book book : orderb.getBooks()) {
       this.books.add(new BookstoreBookData(book));
     }
   }

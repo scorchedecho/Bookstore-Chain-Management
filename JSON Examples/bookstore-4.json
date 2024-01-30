@@ -1,0 +1,9 @@
+{
+  "bookstoreName": "Bookaria San Francisco",
+  "bookstoreAddress": "4321 Main St",
+  "bookstoreCity": "San Francisco",
+  "bookstoreState": "California",
+  "bookstoreZip" : "94016",
+  "bookstorePhone": "239-555-4321",
+  "bookstoreWebsite": "www.bookaria.com/locations/sanfrancisco"
+}
