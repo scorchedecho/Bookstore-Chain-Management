@@ -153,7 +153,7 @@ public class BookstoreService {
     return bookstoreDao.findById(bookstoreId).orElseThrow(
       // throw exception if bookstore not found
       () -> new NoSuchElementException(
-        String.format("Bookstore with ID %b not found", bookstoreId))
+        String.format("Bookstore with ID %s not found", bookstoreId))
     );
   }
 
@@ -275,7 +275,7 @@ public class BookstoreService {
     return employeeDao.findById(employeeId).orElseThrow(
       // throw exception if employee not found
       () -> new NoSuchElementException(
-        String.format("Employee with ID %b not found at bookstore with ID %b", employeeId, bookstoreId)
+        String.format("Employee with ID %s not found at bookstore with ID %s", employeeId, bookstoreId)
       )
     );
   }
@@ -387,7 +387,7 @@ public class BookstoreService {
     return customerDao.findById(customerId).orElseThrow(
       // throw exception if customer not found
       () -> new NoSuchElementException(
-        String.format("Customer with ID %b not found at bookstore with ID %b", customerId, bookstoreId)
+        String.format("Customer with ID %s not found at bookstore with ID %s", customerId, bookstoreId)
       )
     );
   }
@@ -527,7 +527,7 @@ public class BookstoreService {
     return bookDao.findById(bookId).orElseThrow(
       // throw exception if book not found
       () -> new NoSuchElementException(
-        String.format("Book with ID %b not found at bookstore with ID %b", bookId, bookstoreId)
+        String.format("Book with ID %s not found at bookstore with ID %s", bookId, bookstoreId)
       )
     );
   }
@@ -632,7 +632,7 @@ public class BookstoreService {
     return orderDao.findById(orderId).orElseThrow(
       // throw exception if order not found
       () -> new NoSuchElementException(
-        String.format("Order with ID %b not found at bookstore with ID %b", orderId, bookstoreId)
+        String.format("Order with ID %s not found at bookstore with ID %s", orderId, bookstoreId)
       )
     );
   }

@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -68,4 +69,20 @@ public class GlobalErrorHandler {
   }
 
   // todo HttpRequestMethodNotSupportedException
+  /**
+   * Handle HttpRequestMethodNotSupportedException.
+   *
+   * @param hrmnse the HttpRequestMethodNotSupportedException
+   * @return the error message
+   */
+  // HTTP 400 (BAD REQUEST)
+  @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public Map<String, String> handleHttpRequestMethodNotSupportedException(
+      HttpRequestMethodNotSupportedException hrmnse) {
+    // log the error
+    log.error("HttpRequestMethodNotSupportedException: " + hrmnse.toString());
+    // return the error message
+    return Map.of("message", hrmnse.toString());
+  }
 }

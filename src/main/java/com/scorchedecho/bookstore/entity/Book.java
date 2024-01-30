@@ -52,7 +52,7 @@ public class Book {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @ManyToMany(mappedBy = "books", cascade = CascadeType.ALL) // TODO ask about this
+  @ManyToMany(mappedBy = "books") // TODO ask about this
   private Set<Bookstore> bookstores = new HashSet<>();
 
   // relationship variable

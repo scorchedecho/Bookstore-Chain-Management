@@ -50,7 +50,7 @@ public class Employee {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @ManyToOne(cascade = CascadeType.ALL)
+  @ManyToOne()
   @JoinColumn(name = "bookstore_id")
   private Bookstore bookstore;
 }
