@@ -29,6 +29,13 @@ This project was created as part of the Back End boot camp at Promineo Tech. The
   - [Retrieving an employee by ID](#retrieving-an-employee-by-id)
   - [Retrieving all employees by a bookstore ID](#retrieving-all-employees-by-a-bookstore-id)
   - [Example Employee JSON](#example-employee-json)
+- [Managing Books](#managing-books)
+  - [Adding a new book](#adding-a-new-book)
+  - [Updating a book](#updating-a-book)
+  - [Deleting a book](#deleting-a-book)
+  - [Retrieving a book by ID](#retrieving-a-book-by-id)
+  - [Retrieving all books by a bookstore ID](#retrieving-all-books-by-a-bookstore-id)
+  - [Example Book JSON](#example-book-json)
 
 ## Managing bookstores
 ### Adding a new bookstore
@@ -76,12 +83,7 @@ Below is an example JSON snippet. More examples can be found in the `JSON Exampl
         "bookstoreZip" : "33913",
         "bookstorePhone": "239-555-1234",
         "bookstoreWebsite": "www.bookaria.com/locations/ftmyers"
-    }  
-
-### Updating a bookstore
-Update a bookstore's information by creating a PUT request to the `/bookstore/{bookstoreId}` endpoint.
-
-Upon successful update, the server will return the bookstore's ID and information.
+    }
 
 ## Managing employees
 ### Adding a new employee
@@ -122,3 +124,41 @@ Below is an example JSON snippet. More examples can be found in the `JSON Exampl
         "employeeEmail": "ari_s@bookstore.net",
         "employeeJobTitle": "Manager"
     }  
+
+## Managing books
+### Adding a new book
+Add a new book to the database by creating a POST request to the `/{bookstoreId}/book` endpoint. The request should contain the following information:
+- Title
+- Author
+- Publisher
+- Genre
+
+Upon successful creation, the server will return the new book's ID and information.
+
+### Updating a book
+Update a book's information by creating a PUT request to the `/{bookstoreId}/book/{bookId}` endpoint with the updated information.
+
+Upon successful update, the server will return the book's ID and information.
+
+### Deleting a book
+Delete a book from the database by creating a DELETE request to the `/{bookstoreId}/book/{bookId}` endpoint.
+
+Upon successful deletion, the server will return a success message.
+
+### Retrieving a book by ID
+Retrieve a book's information by creating a GET request to the `/{bookstoreId}/book/{bookId}` endpoint.
+
+Upon successful retrieval, the server will return the book's information.
+
+### Retrieving all books by a bookstore ID
+Retrieve all books in the database by creating a GET request to the `/{bookstoreId}/book` endpoint.
+
+### Example Book JSON
+Below is an example JSON snippet. More examples can be found in the `JSON Examples` directory.
+
+    {
+        "bookTitle": "A Court of Thorns and Roses",
+        "bookAuthor": "Sarah J. Maas",
+        "bookPublisher": "Bloomsbury Publishing",
+        "bookGenre": "Fantasy Romance"
+    } 
