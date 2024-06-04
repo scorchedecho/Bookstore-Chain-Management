@@ -3,7 +3,7 @@ The API is built using Java and Spring Boot and uses a MySQL database to store d
 
 You can find the project's Javadoc [here](https://doc.aridstraea.dev/BookstoreChainManagement).
 
-Additionally, a wiki with all the information in this document and more information about the project can be found [here]().
+Additionally, a wiki with all the information in this document and more information about the project can be found [here](https://github.com/aristraea/Bookstore-Chain-Management/wiki).
 
 This project was created as part of the Back End boot camp at Promineo Tech. The requirements for the project are as follows:
 - A REST Web API server that uses JPA and Spring Boot.
