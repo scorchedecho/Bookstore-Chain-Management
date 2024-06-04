@@ -150,8 +150,15 @@ Retrieve a book's information by creating a GET request to the `/{bookstoreId}/b
 
 Upon successful retrieval, the server will return the book's information.
 
+### Retrieving a book by genre
+Retrieve all books by genre in the database by creating a GET request to the `/{bookstoreId}/book/genre/{genre}` endpoint.
+
+Upon successful retrieval, the server will return the list of books.
+
 ### Retrieving all books by a bookstore ID
 Retrieve all books in the database by creating a GET request to the `/{bookstoreId}/book` endpoint.
+
+Upon successful retrieval, the server will return the list of books.
 
 ### Example Book JSON
 Below is an example JSON snippet. More examples can be found in the `JSON Examples` directory.
