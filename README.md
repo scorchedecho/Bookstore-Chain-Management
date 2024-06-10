@@ -32,7 +32,6 @@ This project was created as part of the Back End boot camp at Promineo Tech. The
 - [Managing Books](#managing-books)
   - [Adding a new book](#adding-a-new-book)
   - [Updating a book](#updating-a-book)
-  - [Deleting a book](#deleting-a-book)
   - [Retrieving a book by ID](#retrieving-a-book-by-id)
   - [Retrieving all books by a bookstore ID](#retrieving-all-books-by-a-bookstore-id)
   - [Example Book JSON](#example-book-json)
@@ -139,9 +138,6 @@ Upon successful creation, the server will return the new book's ID and informati
 Update a book's information by creating a PUT request to the `/{bookstoreId}/book/{bookId}` endpoint with the updated information.
 
 Upon successful update, the server will return the book's ID and information.
-
-### Deleting a book
-Delete a book from the database by creating a DELETE request to the `/{bookstoreId}/book/{bookId}` endpoint.
 
 Upon successful deletion, the server will return a success message.
 
