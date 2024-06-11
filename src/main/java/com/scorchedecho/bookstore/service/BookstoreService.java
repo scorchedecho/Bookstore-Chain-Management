@@ -20,17 +20,14 @@ import com.scorchedecho.bookstore.controller.model.BookstoreBookData;
 import com.scorchedecho.bookstore.controller.model.BookstoreCustomerData;
 import com.scorchedecho.bookstore.controller.model.BookstoreData;
 import com.scorchedecho.bookstore.controller.model.BookstoreEmployeeData;
-import com.scorchedecho.bookstore.controller.model.BookstoreOrderData;
 import com.scorchedecho.bookstore.dao.BookDao;
 import com.scorchedecho.bookstore.dao.BookstoreDao;
 import com.scorchedecho.bookstore.dao.CustomerDao;
 import com.scorchedecho.bookstore.dao.EmployeeDao;
-import com.scorchedecho.bookstore.dao.OrderDao;
 import com.scorchedecho.bookstore.entity.Book;
 import com.scorchedecho.bookstore.entity.Bookstore;
 import com.scorchedecho.bookstore.entity.Customer;
 import com.scorchedecho.bookstore.entity.Employee;
-import com.scorchedecho.bookstore.entity.Orderb;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -55,8 +52,6 @@ public class BookstoreService {
   private EmployeeDao employeeDao;
   @Autowired
   private BookDao bookDao;
-  @Autowired
-  private OrderDao orderDao;
 
   // PLANNING
   // No methods are yet implemented in this service.
@@ -76,6 +71,8 @@ public class BookstoreService {
   public BookstoreData saveBookstore(BookstoreData bookstoreData) {
     Bookstore bookstore = findOrCreateBookstore(bookstoreData.getBookstoreId()); // find or create bookstore
     copyBookstoreData(bookstore, bookstoreData); // copy data from bookstoreData to bookstore
+    bookstore.getCustomers().clear();
+    bookstore.getEmployees().clear(); // remove customers/employees to prevent recursion
     return new BookstoreData(bookstoreDao.save(bookstore)); // save and return new bookstoreData
   }
 
@@ -95,7 +92,10 @@ public class BookstoreService {
    * @return            the BookstoreData
    */
   public BookstoreData getBookstore(long bookstoreId) {
-    return new BookstoreData(findBookstore(bookstoreId)); // find and return bookstore
+    BookstoreData bookstoreData = new BookstoreData(findBookstore(bookstoreId));// find and create bookstoreData
+    bookstoreData.getCustomers().clear();
+    bookstoreData.getEmployees().clear(); // remove customers and employees
+    return bookstoreData; // find and return bookstore
   }
 
   /**
@@ -112,7 +112,6 @@ public class BookstoreService {
 
       // remove customers, orders, and employees
       bookstoreData.getCustomers().clear();
-      bookstoreData.getOrderbs().clear();
       bookstoreData.getEmployees().clear();
       // add
       result.add(bookstoreData);
@@ -292,6 +291,7 @@ public class BookstoreService {
     employee.setEmployeeLastName(employeeData.getEmployeeLastName());
     employee.setEmployeePhone(employeeData.getEmployeePhone());
     employee.setEmployeeEmail(employeeData.getEmployeeEmail());
+    employee.setEmployeeJobTitle(employeeData.getEmployeeJobTitle());
   }
 
   /* *************************************
@@ -311,11 +311,12 @@ public class BookstoreService {
     // find book store & find or create customer
     Bookstore bookstore = findBookstore(bookstoreId);
     Customer customer = findOrCreateCustomer(bookstoreId, customerData.getCustomerId());
-    //copy all data from bookstoreCustomer to employee
+    //copy all data from bookstoreCustomer to customer
     copyCustomerData(customer, customerData);
     // save the customer (and return it)
     customer.getBookstores().add(bookstore);
     bookstore.getCustomers().add(customer);
+    customer.getBookstores().clear(); // remove bookstores to prevent recursion
     return new BookstoreCustomerData(customerDao.save(customer));
   }
 
@@ -328,7 +329,9 @@ public class BookstoreService {
    * @return            the BookstoreCustomerData
    */
   public BookstoreCustomerData getCustomer(long bookstoreId, long customerId) {
-    return new BookstoreCustomerData(findCustomer(bookstoreId, customerId)); // find and return customer
+    BookstoreCustomerData customer = new BookstoreCustomerData(findCustomer(bookstoreId, customerId));
+    customer.getBookstores().clear(); // remove bookstores
+    return customer;  // find and return customer
   }
 
   /**
@@ -345,6 +348,7 @@ public class BookstoreService {
       BookstoreCustomerData customerData = new BookstoreCustomerData(customer);
       for (Bookstore bookstore : customer.getBookstores()) {
         if (bookstore.getBookstoreId() == bookstoreId) {
+          customerData.getBookstores().clear(); // remove bookstores
           result.add(customerData); // add to result list
         }
       }
@@ -352,6 +356,20 @@ public class BookstoreService {
 
     return result;
   }
+
+  /*
+  for (Bookstore bookstore : bookstoreDao.findAll()) {
+      // yoink it
+      BookstoreData bookstoreData = new BookstoreData(bookstore);
+
+      // remove customers, orders, and employees
+      bookstoreData.getCustomers().clear();
+      bookstoreData.getOrderbs().clear();
+      bookstoreData.getEmployees().clear();
+      // add
+      result.add(bookstoreData);
+    }
+   */
 
   /**
    * Find or create a {@link Customer} by its ID and the ID of the {@link Bookstore} it is at.
@@ -545,109 +563,5 @@ public class BookstoreService {
     book.setBookAuthor(bookData.getBookAuthor());
     book.setBookPublisher(bookData.getBookPublisher());
     book.setBookGenre(bookData.getBookGenre());
-  }
-
-  /* *************************************
-   * ORDER METHODS                       *
-   * CRUD?: CREATE, READ, UPDATE         *
-   * *************************************/
-
-  /**
-   * Save an {@link Orderb} to the database.
-   *
-   * @param bookstoreId        the ID of the Bookstore the Order is at
-   * @param bookstoreOrderData the BookstoreOrderData to save
-   * @return                   the saved BookstoreOrderData
-   */
-  @Transactional
-  public BookstoreOrderData saveOrder(long bookstoreId, BookstoreOrderData bookstoreOrderData) {
-    // find bookstore & find or create order
-    Bookstore bookstore = findBookstore(bookstoreId);
-    Orderb orderb = findOrCreateOrder(bookstoreId, bookstoreOrderData.getOrderId());
-    //copy all data from bookstoreOrderData to order
-    copyOrderData(orderb, bookstoreOrderData);
-    // save the order (and return it)
-    orderb.setBookstore(bookstore);
-    bookstore.getOrderbs().add(orderb);
-    return new BookstoreOrderData(orderDao.save(orderb));
-  }
-
-  /**
-   * Get a {@link BookstoreOrderData} by its ID
-   * and the ID of the {@link Bookstore} it is at.
-   *
-   * @param bookstoreId the ID of the Bookstore the Order is at
-   * @param orderId     the ID of the Order to get
-   * @return            the BookstoreOrderData
-   */
-  public BookstoreOrderData getOrder(long bookstoreId, long orderId) {
-    return new BookstoreOrderData(findOrder(bookstoreId, orderId)); // find and return order
-  }
-
-  public List<BookstoreOrderData> getAllOrders(long bookstoreId) {
-    List<BookstoreOrderData> result = new LinkedList<>();
-
-    for(Orderb orderb : orderDao.findAll()) {
-      // yoink
-      BookstoreOrderData orderData = new BookstoreOrderData(orderb);
-      if (orderb.getBookstore().getBookstoreId() == bookstoreId) {
-        result.add(orderData); // add to result list
-      }
-    }
-
-    return result;
-  }
-
-  /**
-   * Find or create an {@link Orderb} by its ID and the ID of the {@link Bookstore} it is at.
-   *
-   * @param bookstoreId the ID of the Bookstore to find or create the Order at
-   * @param orderId     the ID of the Order to find or create
-   * @return            the Order
-   */
-  private Orderb findOrCreateOrder(long bookstoreId, long orderId) {
-    Orderb orderb = null;
-    // attempt to find the order by id
-    if (orderId > 0) {
-      // if id not null, but not exists, throw exception
-      // if id not null, and exists, retrieve order
-      orderb = findOrder(bookstoreId, orderId);
-    }
-    // if still null, not found. create a new order
-    if (orderb == null) {
-      orderb = new Orderb();
-    }
-
-    return orderb;
-  }
-
-  /**
-   * Find a {@link Orderb} by its ID and the ID of the {@link Bookstore} it is at.
-   *
-   * @param bookstoreId the ID of the Bookstore to find the Order at
-   * @param orderId     the ID of the Order to find
-   * @return            the Order
-   */
-  private Orderb findOrder(long bookstoreId, long orderId) {
-    return orderDao.findById(orderId).orElseThrow(
-      // throw exception if order not found
-      () -> new NoSuchElementException(
-        String.format("Order with ID %s not found at bookstore with ID %s", orderId, bookstoreId)
-      )
-    );
-  }
-
-  /**
-   * Copy the data from the {@link BookstoreOrderData} to the {@link Orderb}.
-   *
-   * @param orderb    the Order to be updated
-   * @param orderData the BookstoreOrderData to copy from
-   */
-  private void copyOrderData(Orderb orderb, BookstoreOrderData orderData) {
-    // copy all the fields from the BookstoreOrderData to Order
-    orderb.setOrderId(orderData.getOrderId());
-    orderb.setOrderDate(orderData.getOrderDate());
-    orderb.setCustomer(orderData.getCustomer());
-    orderb.setBookstore(orderData.getBookstore());
   }
 }

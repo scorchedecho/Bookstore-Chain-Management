@@ -21,9 +21,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
@@ -52,13 +50,6 @@ public class Book {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @ManyToMany(mappedBy = "books") // TODO ask about this
+  @ManyToMany(mappedBy = "books", cascade = CascadeType.PERSIST)
   private Set<Bookstore> bookstores = new HashSet<>();
-
-  // relationship variable
-  @EqualsAndHashCode.Exclude
-  @ToString.Exclude // prevent recursion
-  @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "orderb_id")
-  private Orderb orderb;
 }

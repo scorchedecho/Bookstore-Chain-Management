@@ -18,7 +18,6 @@ package com.scorchedecho.bookstore.controller.model;
 
 import com.scorchedecho.bookstore.entity.Bookstore;
 import com.scorchedecho.bookstore.entity.Customer;
-import com.scorchedecho.bookstore.entity.Orderb;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
@@ -39,7 +38,6 @@ public class BookstoreCustomerData {
   private String customerPhone;
   private String customerEmail;
   private Set<BookstoreData> bookstores = new HashSet<>();
-  private Set<BookstoreOrderData> orders = new HashSet<>();
 
   /**
    * Constructor for BookstoreCustomerData.
@@ -56,9 +54,6 @@ public class BookstoreCustomerData {
 
     for (Bookstore bookstore : customer.getBookstores()) {
       this.bookstores.add(new BookstoreData(bookstore));
-    }
-    for (Orderb orderb : customer.getOrderbs()) {
-      this.orders.add(new BookstoreOrderData(orderb));
     }
   }
 }

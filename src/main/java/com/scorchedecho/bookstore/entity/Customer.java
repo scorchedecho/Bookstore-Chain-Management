@@ -22,12 +22,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 
 /**
  * Customer Entity class of the Bookstore application.
@@ -37,6 +37,7 @@ import lombok.ToString;
  */
 @Entity
 @Data
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Customer {
 
   // primary key
@@ -51,14 +52,7 @@ public class Customer {
 
   // relationship variable
   @EqualsAndHashCode.Exclude
-  @ToString.Exclude // prevent recursion
+  @Exclude // prevent recursion
   @ManyToMany(mappedBy = "customers", cascade = CascadeType.PERSIST)
   private Set<Bookstore> bookstores = new HashSet<>();
-
-  // relationship variable
-  @EqualsAndHashCode.Exclude
-  @ToString.Exclude // prevent recursion
-  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
-  private Set<Orderb> orderbs = new HashSet<>();
-
 }

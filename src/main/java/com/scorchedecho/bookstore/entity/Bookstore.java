@@ -30,6 +30,7 @@ import java.util.Set;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import lombok.ToString.Exclude;
 
 /**
  * Bookstore Entity class of the Bookstore application.
@@ -55,18 +56,12 @@ public class Bookstore {
 
   // relationship variable
   @EqualsAndHashCode.Exclude
-  @ToString.Exclude // prevent recursion
+  @Exclude // prevent recursion
   @ManyToMany(cascade = CascadeType.PERSIST)
   @JoinTable(name = "bookstore_customer",
       joinColumns = @JoinColumn(name = "bookstore_id"),
       inverseJoinColumns = @JoinColumn(name = "customer_id"))
   private Set<Customer> customers = new HashSet<>();
-
-  // relationship variable
-  @EqualsAndHashCode.Exclude
-  @ToString.Exclude // prevent recursion
-  @OneToMany(mappedBy = "bookstore", cascade = CascadeType.PERSIST)
-  private Set<Orderb> orderbs = new HashSet<>();
 
   // relationship variable
   @EqualsAndHashCode.Exclude
@@ -77,7 +72,7 @@ public class Bookstore {
   // relationship variable
   @EqualsAndHashCode.Exclude
   @ToString.Exclude // prevent recursion
-  @ManyToMany(cascade = CascadeType.ALL) // TODO ask about this
+  @ManyToMany(cascade = CascadeType.PERSIST) // TODO ask about this
   @JoinTable(name = "bookstore_book",
       joinColumns = @JoinColumn(name = "bookstore_id"),
       inverseJoinColumns = @JoinColumn(name = "book_id"))
